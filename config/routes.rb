@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'animes#index'
+  get 'top/login'
+  post 'top/login'
+  get 'top/logout'
+  resources :users, only: [:index, :new, :create, :destroy]
+  resources :s, only: [:index, :new, :create, :destroy]
+  resources :likes, only: [:create, :destroy]
+
 end
