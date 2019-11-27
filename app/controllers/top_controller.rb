@@ -1,9 +1,7 @@
 class TopController < ApplicationController
   def login
-    
     user = User.authenticate(params[:uid], params[:pass])
     if user
-      
       session[:login_uid] = params[:uid]
       redirect_to root_path
     else
@@ -15,5 +13,4 @@ class TopController < ApplicationController
     session.delete(:login_uid)
     redirect_to root_path
   end
-
 end
