@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_070649) do
     t.string "title"
     t.string "message"
     t.string "intro"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

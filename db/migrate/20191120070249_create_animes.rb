@@ -4,6 +4,7 @@ class CreateAnimes < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :message
       t.string :intro
+      t.integer :user_id
 
       t.timestamps
     end
