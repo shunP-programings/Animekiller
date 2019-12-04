@@ -10,8 +10,8 @@ class AnimesController < ApplicationController
 
   def create
     user_id = User.find_by(uid: session[:login_uid]).id
-    @anime = Anime.new(message: params[:tweet][:message], user_id: user_id)
-    if @tweet.save
+    @anime = Anime.new(message: params[:anime][:message], user_id: user_id)
+    if @anime.save
       redirect_to animes_path
     else
       render new_anime_path

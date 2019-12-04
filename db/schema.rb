@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_070649) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
-    t.string "comment"
+    t.string "message"
     t.string "intro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
