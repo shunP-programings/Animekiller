@@ -26,12 +26,20 @@
   <%= User.find(t.user_id).uid %>
   <% if current_user and t.user_id == current_user.id %>
     <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
+    <%= link_to '編集', :edit%>
   <% end %>
   <% if current_user %>
     <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
       <%= link_to '❤️', like_path(t), method: :delete %>
     <% else %>
       <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+    <% end %>
+  <% end %>
+  <% if current_user %>
+    <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
+      <%= link_to '💔️', like_path(t), method: :delete %>
+    <% else %>
+      <%= link_to '❤︎', likes_path(anime_id: t.id), method: :post %>
     <% end %>
   <% end %>
 </p>
