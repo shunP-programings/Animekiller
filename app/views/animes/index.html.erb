@@ -26,7 +26,8 @@
   <%= User.find(t.user_id).uid %>
   <% if current_user and t.user_id == current_user.id %>
     <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-    <%= link_to '編集', :edit%>
+    <%= link_to '編集', "animes/#{t.id}/edit" %>
+
   <% end %>
   <% if current_user %>
     <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>

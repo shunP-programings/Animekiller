@@ -18,6 +18,21 @@ class AnimesController < ApplicationController
     end
   end
 
+  def edit
+      @anime = Anime.find(params[:id])
+  end
+
+  def update
+     anime = Anime.find(params[:id])
+     anime.update(message: params[:anime][:message])
+     
+    if anime.save
+      redirect_to animes_path
+    else
+       render :edit
+    end
+  end
+
   def destroy
     anime = Anime.find(params[:id])
     anime.destroy
