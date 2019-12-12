@@ -1,4 +1,10 @@
 <h2>ログイン画面</h2>
+<% if flash[:notice] %>
+  <p><font color="blue"><%= flash[:notice] %></font></p>
+<% end %>  
+
+
+<h2>サイト名にログインする</h2>
 <%= form_tag '/top/login',method: :post do %>
     <%= label_tag :uid, 'ユーザID' %>
     <%= text_field_tag :uid %>
@@ -6,5 +12,7 @@
     <%= password_field_tag :pass %>
     <%= submit_tag 'ログイン' %>
 <%end%>
+
+<p><%= link_to '新規登録', new_user_path %></p>
 
 <p><%= link_to '戻る', :back %>
