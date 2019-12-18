@@ -1,12 +1,6 @@
-class LikesController < ApplicationController
-
+class BadsController < ApplicationController
   def create
-    anime = Anime.find(params[:anime_id])
-   if @bad= Bad.find_by(user_id: current_user.id, anime_id: params[:anime_id])
-      @bad.destroy
-   end
-
-
+   anime = Anime.find(params[:anime_id])
     unless anime.liked?(current_user)
       anime.like(current_user)
     end

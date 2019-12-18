@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :destroy]
   resources :animes, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :likes, only: [:create, :destroy]
+  resources :bads, only: [:create, :destroy]
 
 end
