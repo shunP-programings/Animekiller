@@ -14,7 +14,8 @@
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
-    <%= f.text_field :message %>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
     <%= f.submit "投稿" %>
   </p>
   <% end %>
