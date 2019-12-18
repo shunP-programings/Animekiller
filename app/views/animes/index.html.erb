@@ -37,10 +37,10 @@
     <% end %>
   <% end %>
   <% if current_user %>
-    <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
-      <%= link_to '💔️', like_path(t), method: :delete %>
+    <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
+      <%= link_to '💔️', bad_path(t), method: :delete %>
     <% else %>
-      <%= link_to '❤︎', likes_path(anime_id: t.id), method: :post %>
+      <%= link_to '❤︎', bads_path(anime_id: t.id), method: :post %>
     <% end %>
   <% end %>
 </p>
