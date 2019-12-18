@@ -14,7 +14,8 @@
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
-    <%= f.text_field :message %>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
     <%= f.submit "投稿" %>
   </p>
   <% end %>
@@ -38,12 +39,19 @@
   <% end %>
   <% if current_user %>
     <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
-      <%= link_to '💔️', bad_path(t), method: :delete %>
+      <%= link_to '❤', bad_path(t), method: :delete %>
     <% else %>
-      <%= link_to '❤︎', bads_path(anime_id: t.id), method: :post %>
+      <%= link_to '♡︎', bads_path(anime_id: t.id), method: :post %>
     <% end %>
   <% end %>
 </p>
+<% end %>
+
+<h2>いいねランキング</h2>
+<% @all_ranks.each do |t| %>
+<%= User.find(t.user_id).uid %>
+<%= t.message %>
+<br>
 <% end %>
 
 <% if current_user %>

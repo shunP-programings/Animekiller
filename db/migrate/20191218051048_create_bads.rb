@@ -2,7 +2,7 @@ class CreateBads < ActiveRecord::Migration[5.2]
   def change
     create_table :bads do |t|
       t.integer :user_id
-      t.integer :anime
+      t.integer :anime_id
 
       t.timestamps
     end
