@@ -5,7 +5,9 @@ class User < ApplicationRecord
   
   has_many :animes, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :bads, dependent: :destroy
   has_many :like_animes, through: :likes, source: :anime
+  has_many :bad_animes, through: :bads, source: :anime
 
   attr_accessor :password, :password_confirmation
   
