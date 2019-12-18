@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_051048) do
 
   create_table "bads", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "anime"
+    t.integer "anime_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
