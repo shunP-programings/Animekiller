@@ -12,12 +12,18 @@ class UsersController < ApplicationController
       uid: params[:user][:uid],
       password: params[:user][:password],
       password_confirmation: params[:user][:password_confirmation])
+     # params.require(:user).permit(:image)
     if @user.save
       redirect_to users_path
     else
       render 'new'
     end
   end
+  
+  private
+    def user_params
+      params.require(:user).permit(:content, :image)
+    end
 
   def destroy
     user = User.find(params[:id])

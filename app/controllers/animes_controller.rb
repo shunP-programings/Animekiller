@@ -2,7 +2,8 @@ class AnimesController < ApplicationController
   def index
     @animes = Anime.all
     @anime = Anime.new
-    @all_ranks = Anime.find(Like.group(:anime_id).order('count(anime_id) desc').limit(3).pluck(:anime_id))
+    @like_ranks = Anime.find(Like.group(:anime_id).order('count(anime_id) desc').limit(3).pluck(:anime_id))
+    @bad_ranks = Anime.find(Bad.group(:anime_id).order('count(anime_id) desc').limit(3).pluck(:anime_id))
   end
 
   def new

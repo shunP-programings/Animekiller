@@ -23,6 +23,11 @@
 
 <% @animes.each do |t| %>
 <p>
+  
+  <% if @user.image? %>
+      <%= image_tag @user.image.url %>
+  <% end %>
+  
   <%= User.find(t.user_id).uid %>
   <%= t.message %>
   <% if current_user and t.user_id == current_user.id %>
@@ -39,16 +44,23 @@
   <% end %>
   <% if current_user %>
     <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
-      <%= link_to '❤', bad_path(t), method: :delete %>
+      <%= link_to '👎', bad_path(t), method: :delete %>
     <% else %>
-      <%= link_to '♡︎', bads_path(anime_id: t.id), method: :post %>
+      <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
     <% end %>
   <% end %>
 </p>
 <% end %>
 
 <h2>いいねランキング</h2>
-<% @all_ranks.each do |t| %>
+<% @like_ranks.each do |t| %>
+<%= User.find(t.user_id).uid %>
+<%= t.message %>
+<br>
+<% end %>
+
+<h2>バッドランキング</h2>
+<% @bad_ranks.each do |t| %>
 <%= User.find(t.user_id).uid %>
 <%= t.message %>
 <br>
@@ -62,5 +74,3 @@
 
 <p><%= link_to 'ユーザID一覧', users_path %></p>
 <p><%= link_to '新規登録', new_user_path %></p>
-
-<p>aaaaaaaaaaaaaaaaaa</p>

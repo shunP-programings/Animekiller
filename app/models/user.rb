@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_many :bad_animes, through: :bads, source: :anime
 
   attr_accessor :password, :password_confirmation
-  
+
+  mount_uploader :image, ImageUploader
+
   def password=(val)
     if val.present?
       self.pass = BCrypt::Password.create(val)
