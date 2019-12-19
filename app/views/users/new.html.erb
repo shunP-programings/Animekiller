@@ -13,6 +13,20 @@
     <%= f.label :password_confirmation, 'パスワード(確認)' %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </p>
+  
+ <%#  <%= form_for @anime do |f| %>
+  <%#  <%= f.file_field :image %>
+  <%#  <%= f.submit 'アップロードする'%>
+ <%#  <% end %> 
+  
+  <%= f.label "画像をアップロード" %><br><%= f.file_field :image %>
+  
+ <%#  <% if @user.image? %>
+ <%#    <%= image_tag @user.image.url %>
+<%#   <% else %>
+ <%#    <%= image_tag noimage.gif %>
+ <%#  <% end %>
+  
   <p>
     <%= f.submit '登録', class: 'btn btn-primary' %>
   </p>
