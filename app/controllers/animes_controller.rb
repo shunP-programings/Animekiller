@@ -13,12 +13,20 @@ class AnimesController < ApplicationController
   def create
     user_id = User.find_by(uid: session[:login_uid]).id
     @anime = Anime.new(message: params[:anime][:message], user_id: user_id)
+    #params.require(:user).permit(:image)
     if @anime.save
       redirect_to animes_path
     else
       render new_anime_path
     end
   end
+  
+  private
+    def user_params
+      params.require(:user).permit(:content, :image)
+    end
+  
+  
 
   def edit
       @anime = Anime.find(params[:id])
