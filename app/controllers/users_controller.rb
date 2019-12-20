@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       uid: params[:user][:uid],
       password: params[:user][:password],
       password_confirmation: params[:user][:password_confirmation])
-     # params.require(:user).permit(:image)
+      #params.require(:user).permit(:image)
     if @user.save
       redirect_to users_path
     else
@@ -20,10 +20,6 @@ class UsersController < ApplicationController
     end
   end
   
-  private
-    def user_params
-      params.require(:user).permit(:content, :image)
-    end
 
   def destroy
     user = User.find(params[:id])
@@ -38,4 +34,11 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
+  def get_image
+    user = User.find(params[:id])
+    send_data user.file, disposition: :inline, type:'image/png'
+  end
+
+  
 end

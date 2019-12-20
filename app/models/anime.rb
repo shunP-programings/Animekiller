@@ -7,7 +7,7 @@ class Anime < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
   has_many :bad_users, through: :bads, source: :user
   
-  mount_uploader :image, ImageUploader
+  
   
   def like(user)
     likes.create(user_id:user.id)

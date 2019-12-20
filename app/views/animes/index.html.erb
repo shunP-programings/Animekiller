@@ -23,11 +23,9 @@
 
 <% @animes.each do |t| %>
 <p>
-  
-  <% if @user.image? %>
-      <%= image_tag @user.image.url %>
-  <% end %>
-  
+  <% if anime.picture? %>
+  <%#<%= image_tag @user.image.url %>
+  <%= image_tag "/get_image/#{t.id}" %>
   <%= User.find(t.user_id).uid %>
   <%= t.message %>
   <% if current_user and t.user_id == current_user.id %>
