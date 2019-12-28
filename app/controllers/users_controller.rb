@@ -11,7 +11,9 @@ class UsersController < ApplicationController
     @user = User.new(
       uid: params[:user][:uid],
       password: params[:user][:password],
-      password_confirmation: params[:user][:password_confirmation])
+      password_confirmation: params[:user][:password_confirmation],
+      image: params[:user][:image]
+      )
       #params.require(:user).permit(:image)
     if @user.save
       redirect_to users_path
@@ -36,9 +38,17 @@ class UsersController < ApplicationController
   end
   
   def get_image
-    user = User.find(params[:id])
-    send_data user.file, disposition: :inline, type:'image/png'
+#    user = User.find(params[:id])
+#    send_data user.file, disposition: :inline, type:'image/png'
+  
+  @user = User.find_by(id: params[:id])
+  #画像データが送信された場合
+    if params[:image]
+      #データベースに保存するファイル名はユーザーのid.jpgとする
+      @user.image_name = "#{@user.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/user_images/#{@user.image}",image.read)
+    end
   end
-
   
 end

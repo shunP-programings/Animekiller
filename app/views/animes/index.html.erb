@@ -23,30 +23,32 @@
 
 <% @animes.each do |t| %>
 <p>
-  <% if anime.picture? %>
-  <%#<%= image_tag @user.image.url %>
-  <%= image_tag "/get_image/#{t.id}" %>
-  <%= User.find(t.user_id).uid %>
-  <%= t.message %>
-  <% if current_user and t.user_id == current_user.id %>
-    <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-    <%= link_to '編集', "animes/#{t.id}/edit" %>
-
-  <% end %>
-  <% if current_user %>
-    <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
-      <%= link_to '❤️', like_path(t), method: :delete %>
-    <% else %>
-      <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+  <%#<img src="<%= "/user_images/#{@user.image}" %>
+  <%#<% if anime.picture? %>
+    <%#<%= image_tag @user.image.url %>
+    
+    <%= image_tag "/get_image/#{t.id}" %>
+    <%= User.find(t.user_id).uid %>
+    <%= t.message %>
+    <% if current_user and t.user_id == current_user.id %>
+      <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
+      <%= link_to '編集', "animes/#{t.id}/edit" %>
     <% end %>
-  <% end %>
-  <% if current_user %>
-    <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
-      <%= link_to '👎', bad_path(t), method: :delete %>
-    <% else %>
-      <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
+    <% if current_user %>
+      <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
+        <%= link_to '❤️', like_path(t), method: :delete %>
+      <% else %>
+        <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+      <% end %>
     <% end %>
-  <% end %>
+    <% if current_user %>
+      <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
+        <%= link_to '👎', bad_path(t), method: :delete %>
+      <% else %>
+        <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
+      <% end %>
+    <% end %>
+  <%#<% end %>
 </p>
 <% end %>
 
