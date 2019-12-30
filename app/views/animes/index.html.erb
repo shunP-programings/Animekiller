@@ -14,7 +14,7 @@
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
-    <%= f.label :message %>
+
     <%= f.text_area :message %>
     <%= f.submit "投稿" %>
   </p>
@@ -51,6 +51,8 @@
   <%#<% end %>
 </p>
 <% end %>
+<br>
+<br>
 
 <h2>いいねランキング</h2>
 <% @like_ranks.each do |t| %>
@@ -58,6 +60,8 @@
 <%= t.message %>
 <br>
 <% end %>
+<br>
+<br>
 
 <h2>バッドランキング</h2>
 <% @bad_ranks.each do |t| %>
@@ -65,6 +69,8 @@
 <%= t.message %>
 <br>
 <% end %>
+<br>
+<br>
 
 <% if current_user %>
   <p><%= link_to 'ログアウト', top_logout_path %></p>
