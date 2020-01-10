@@ -20,11 +20,9 @@
  <%#  <% end %> 
  
  <%= form_tag("/users/#{@user.id}/get_image", {multipart: true}) do %>
-          <p>ユーザー名</p>
 
           <p>画像</p>
           <input name="image" type="file">
-          <p>メールアドレス</p>
           <input type="submit" value="登録">
   <% end %>
   
