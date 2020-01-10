@@ -14,9 +14,13 @@
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
-
+    <h3>タイトル</h3>
+    <%= f.text_field :title %>
+    <br>
+    <br>
+    <h3>投稿内容</h3>
     <%= f.text_area :message %>
-    <%= f.submit "投稿" %>
+    <%= f.submit "送信" %>
   </p>
   <% end %>
 <% end %>
@@ -29,7 +33,8 @@
     
     <%= image_tag "/get_image/#{t.id}" %>
     <%= User.find(t.user_id).uid %>
-    <%= t.message %>
+    <%= t.title %>
+    <%= t.title %><%= t.message %>
     <% if current_user and t.user_id == current_user.id %>
       <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
       <%= link_to '編集', "animes/#{t.id}/edit" %>
