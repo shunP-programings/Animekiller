@@ -30,7 +30,7 @@
   <%#<img src="<%= "/user_images/#{@user.image}" %>
   <%#<% if anime.picture? %>
     <%#<%= image_tag @user.image.url %>
-    
+    <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
     <%= image_tag "/get_image/#{t.id}" %>
     <%= User.find(t.user_id).uid %>
     <%= t.title %>
@@ -61,8 +61,11 @@
 
 <h2>いいねランキング</h2>
 <% @like_ranks.each do |t| %>
+<%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
 <%= User.find(t.user_id).uid %>
 <%= t.message %>
+<%# <%= t.message %>
+<br>
 <br>
 <% end %>
 <br>
@@ -70,8 +73,10 @@
 
 <h2>バッドランキング</h2>
 <% @bad_ranks.each do |t| %>
+<%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
 <%= User.find(t.user_id).uid %>
 <%= t.message %>
+<br>
 <br>
 <% end %>
 <br>
