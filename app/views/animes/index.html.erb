@@ -62,7 +62,9 @@
 <h2>いいねランキング</h2>
 <% @like_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
+<%= image_tag "/get_image/#{t.id}" %>
 <%= User.find(t.user_id).uid %>
+<%= t.title %>
 <%= t.message %>
 <%# <%= t.message %>
 <br>
@@ -74,7 +76,9 @@
 <h2>バッドランキング</h2>
 <% @bad_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
+<%= image_tag "/get_image/#{t.id}" %>
 <%= User.find(t.user_id).uid %>
+<%= t.title %>
 <%= t.message %>
 <br>
 <br>

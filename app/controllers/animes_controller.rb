@@ -18,7 +18,7 @@ class AnimesController < ApplicationController
     if @anime.save
       redirect_to animes_path
     else
-      render new_anime_path
+      redirect_to animes_path
     end
   end
   
@@ -34,9 +34,9 @@ class AnimesController < ApplicationController
   end
 
   def update
-     anime = Anime.find(params[:id])
-     anime.update(message: params[:anime][:message])
-     anime.update(title: params[:anime][:title])
+     @anime = Anime.find(params[:id])
+     @anime.update(message: params[:anime][:message])
+     @anime.update(title: params[:anime][:title])
     if anime.save
       redirect_to animes_path
     else
