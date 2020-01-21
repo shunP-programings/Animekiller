@@ -1,40 +1,44 @@
-<div class="container">
-  <h1>ユーザー登録</h1>
-  <%= form_for @user, url: {action: :create} do |f| %>
+<h1>ユーザー登録</h1>
+<%= form_for @user, url: {action: :create} do |f| %>
   <p>
-    <%= f.label :uid, 'ユーザID' %>
-    <%= f.text_field :uid, class: 'form-control'%>
+   <%= f.label :uid, 'ユーザID' %>
+   <%= f.text_field :uid, class: 'form-control'%>
   </p>
+
   <p>
     <%= f.label :password, 'パスワード' %>
     <%= f.password_field :password, class: 'form-control' %>
   </p>
+
   <p>
     <%= f.label :password_confirmation, 'パスワード(確認)' %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
-  </p>
-  
+  </p> 
  <%#  <%= form_for @anime do |f| %>
   <%#  <%= f.file_field :image %>
   <%#  <%= f.submit 'アップロードする'%>
  <%#  <% end %> 
  
- <%= form_tag("/users/#{@user.id}/get_image", {multipart: true}) do %>
-
-          <p>画像</p>
-          <input name="image" type="file">
-          <input type="submit" value="登録", class="btn-lg bg-success">
+  <%= form_tag("/users/#{@user.id}/get_image", {multipart: true}) do %>
+    <p>
+      画像：
+      <input name="image" type="file">
+    </p>  
+      
+    <p>
+      <input type="submit" value="登録", class="btn-lg bg-success">
+    </p>
   <% end %>
   
   <%# <%= f.label "画像をアップロード" %><br>
   
  <%#  <% if @user.image? %>
  <%#    <%= image_tag @user.image.url %>
-<%#   <% else %>
+ <%#   <% else %>
  <%#    <%= image_tag noimage.gif %>
+  <%# end %>
+
+  <p>
+    <%= link_to '戻る', :back , class: 'btn btn-primary'%>
+  </p>
 <% end %>
-  
-
-  <p><%= link_to '戻る', :back , class: 'btn btn-primary'%>
-
-</div>

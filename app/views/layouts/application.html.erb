@@ -10,14 +10,20 @@
   </head>
 
   <body>
+    
     <div class= "header">
       <%= render "hf/header" %>
     </div> 
-    <div class= "main">
-    <%= yield %>
+    
+    <div class= "container">
+      <div class= "main">
+        <%= yield %>
+      </div>
     </div>
+    
     <div class= "footer">
       <%= render "hf/footer" %>
     </div>
+
   </body>
 </html>
