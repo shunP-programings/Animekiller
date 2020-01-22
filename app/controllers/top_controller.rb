@@ -1,7 +1,7 @@
 class TopController < ApplicationController
   def login
-    user = User.authenticate(params[:uid], params[:pass])
-    if user
+    @user = User.authenticate(params[:uid], params[:pass])
+    if @user
       session[:login_uid] = params[:uid]
       redirect_to root_path
     else
