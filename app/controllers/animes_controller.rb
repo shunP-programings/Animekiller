@@ -12,13 +12,13 @@ class AnimesController < ApplicationController
 
   def create
     user_id = User.find_by(uid: session[:login_uid]).id
-    @anime = Anime.new(message: params[:anime][:message], user_id: user_id)
-    @anime = Anime.new(title: params[:anime][:title], user_id: user_id)
+    @anime = Anime.new(message: params[:anime][:message],title: params[:anime][:title], user_id: user_id)
     #params.require(:user).permit(:image)
     if @anime.save
       redirect_to animes_path
     else
       redirect_to animes_path
+     #render new_anime_path
     end
   end
   
@@ -34,9 +34,10 @@ class AnimesController < ApplicationController
     end
   
   
-
   def edit
-      @anime = Anime.find(params[:id])
+    @anime = Anime.find(params[:id])
+    #@user = User.new
+    #render "new"
   end
 
   def update
@@ -46,7 +47,8 @@ class AnimesController < ApplicationController
     if anime.save
       redirect_to animes_path
     else
-       render :edit
+       render 'edit'
+       #render :edit
     end
   end
 

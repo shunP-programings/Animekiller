@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(
       uid: params[:user][:uid],
       password: params[:user][:password],
@@ -34,7 +35,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+   @user = User.find(params[:id])
+   @user.update(message: params[:anime][:message])
+   @user.update(title: params[:anime][:title])
+    if user.save
+      redirect_to users_path
+    else
+       render 'edit'
+       #render :edit
+    end
   end
   
   def get_image
