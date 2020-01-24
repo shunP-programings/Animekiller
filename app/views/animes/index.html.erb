@@ -1,7 +1,6 @@
 <% if flash[:info] %>
 <%= flash[:info] %>
 <% end %>
-
 <% if @anime.errors.present? %>
 <h3>エラーがあります。</h3>
 <ul>
@@ -10,7 +9,6 @@
   <% end %>
 </ul>
 <% end %>
-
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
@@ -22,6 +20,7 @@
     <%= f.text_area :message %>
     <%= f.submit "送信" %>
   </p>
+  
   <% end %>
 <% end %>
 
@@ -34,7 +33,7 @@
     <%= image_tag "/get_image/#{t.id}" %>
     <%= User.find(t.user_id).uid %>
     <%= t.title %>
-    <%= t.title %><%= t.message %>
+    <%= t.message %>
     <% if current_user and t.user_id == current_user.id %>
       <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
       <%= link_to '編集', "animes/#{t.id}/edit" %>

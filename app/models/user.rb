@@ -3,6 +3,7 @@ class User < ApplicationRecord
 #  validates :pass, presence: true, length: {minimum: 4}
   validates :password, presence: true, confirmation: true  
   
+
   has_many :animes, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :bads, dependent: :destroy
