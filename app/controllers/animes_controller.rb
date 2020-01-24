@@ -22,6 +22,12 @@ class AnimesController < ApplicationController
     end
   end
   
+  def destroy
+    anime = Anime.find(params[:id])
+    anime.destroy
+    redirect_to animes_path
+  end
+  
   private
     def user_params
       params.require(:user).permit(:content, :image)
@@ -42,12 +48,6 @@ class AnimesController < ApplicationController
     else
        render :edit
     end
-  end
-
-  def destroy
-    anime = Anime.find(params[:id])
-    anime.destroy
-    redirect_to animes_path
   end
 
 end

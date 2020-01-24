@@ -16,6 +16,7 @@
   <p>
     <%= f.label :password_confirmation, 'パスワード(確認)' %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
+<<<<<<< HEAD
   </p> 
  <%#  <%= form_for @anime do |f| %>
   <%#  <%= f.file_field :image %>
@@ -40,6 +41,17 @@
  <%#   <% else %>
  <%#    <%= image_tag noimage.gif %>
   <%# end %>
+=======
+  </p>
+   <%= form_tag("/users/#{@user.id}/get_image", {multipart: true}) do %>
+          <p>画像</p>
+          <input name="image" type="file">
+          <input type="submit" value="登録">
+  <% end %>
+  <% end %>
+
+  <p><%= link_to '戻る', :back , class: 'btn btn-primary'%>
+>>>>>>> hoshi
 
   <p>
     <%= link_to '戻る', :back , class: 'btn btn-primary'%>
