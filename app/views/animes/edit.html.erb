@@ -1,6 +1,13 @@
+<% if current_user %>
+    <%= f.text_field :message %>
+    <%= f.submit "編集" %>
+<%end%>
+
 <h1>内容編集</h1>
-<%= form_for @anime, url: {action: :update} do |f| %>
+<%= form_for @user, url: {action: :update} do |f| %>
 <%= f.text_field :message %>
   <br>
   <%= f.submit '投稿する'%>
 <% end %>
+
+<p>animes</p>

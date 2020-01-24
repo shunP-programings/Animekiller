@@ -20,40 +20,43 @@
     <%= f.text_area :message %>
     <%= f.submit "送信" %>
   </p>
-  
   <% end %>
 <% end %>
 
 <% @animes.each do |t| %>
-<p>
-  <%#<img src="<%= "/user_images/#{@user.image}" %>
-  <%#<% if anime.picture? %>
-    <%#<%= image_tag @user.image.url %>
-    <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
-    <%= image_tag "/get_image/#{t.id}" %>
-    <%= User.find(t.user_id).uid %>
-    <%= t.title %>
-    <%= t.message %>
-    <% if current_user and t.user_id == current_user.id %>
-      <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-      <%= link_to '編集', "animes/#{t.id}/edit" %>
-    <% end %>
-    <% if current_user %>
-      <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
-        <%= link_to '❤️', like_path(t), method: :delete %>
-      <% else %>
-        <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+  <p>
+    <%#<img src="<%= "/user_images/#{@user.image}" %>
+    <%#<% if anime.picture? %>
+      <%#<%= image_tag @user.image.url %>
+      <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
+      <%#<%= image_tag "/get_image/#{t.id}" %>
+      <%= User.find(t.user_id).uid %>
+      <br>
+      <p>タイトル：<%= t.title %></p>
+      <p>内容：<%= t.message %></p>
+      <% if current_user and t.user_id == current_user.id %>
+        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
+        <%= link_to '編集', "users/#{t.id}/edit" %>
       <% end %>
-    <% end %>
-    <% if current_user %>
-      <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
-        <%= link_to '👎', bad_path(t), method: :delete %>
-      <% else %>
-        <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
+      <% if current_user %>
+        <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
+          <%= link_to '❤️', like_path(t), method: :delete %>
+        <% else %>
+          <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+        <% end %>
       <% end %>
-    <% end %>
-  <%#<% end %>
-</p>
+      <% if current_user %>
+        <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
+          <%= link_to '👎', bad_path(t), method: :delete %>
+        <% else %>
+          <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
+        <br>
+        <br>
+        <br>
+        <% end %>
+      <% end %>
+    <%#<% end %>
+  </p>
 <% end %>
 <br>
 <br>
