@@ -12,16 +12,22 @@
 <% if current_user %>
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
-    <h3>タイトル</h3>
+    <h3>アニメタイトル</h3>
     <%= f.text_field :title %>
     <br>
     <br>
-    <h3>投稿内容</h3>
+    <h3>感想</h3>
     <%= f.text_area :message %>
+    <br>
     <%= f.submit "送信" %>
   </p>
   <% end %>
 <% end %>
+<br>
+<br>
+<h1>みんなの投稿</h1>
+<br>
+
 
 <% @animes.each do |t| %>
   <p>
@@ -32,36 +38,39 @@
       <%#<%= image_tag "/get_image/#{t.id}" %>
       <%= User.find(t.user_id).uid %>
       <br>
-      <p>タイトル：<%= t.title %></p>
-      <p>内容：<%= t.message %></p>
-      <% if current_user and t.user_id == current_user.id %>
-        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-        <%= link_to '編集', "animes/#{t.id}/edit" %>
-      <% end %>
+      <p>
+        アニメ：<%= t.title %>
+      <br>
+        感想：<%= t.message %>
+      </p>
       <% if current_user %>
         <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
-          <%= link_to '❤️', like_path(t), method: :delete %>
+          <%= link_to '😍️', like_path(t), method: :delete %>
         <% else %>
-          <%= link_to '♡', likes_path(anime_id: t.id), method: :post %>
+          <%= link_to 'ｲｲﾈ!️', likes_path(anime_id: t.id), method: :post %>
         <% end %>
       <% end %>
       <% if current_user %>
         <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
-          <%= link_to '👎', bad_path(t), method: :delete %>
+          <%= link_to '😟', bad_path(t), method: :delete %>
         <% else %>
-          <%= link_to '⤵︎', bads_path(anime_id: t.id), method: :post %>
-        <br>
-        <br>
-        <br>
+          <%= link_to 'ｳ~ﾝ…', bads_path(anime_id: t.id), method: :post %>
         <% end %>
       <% end %>
+      <% if current_user and t.user_id == current_user.id %>
+        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
+        <%= link_to '編集', "animes/#{t.id}/edit" %>
+      <% end %>
+      <br>
+      <br>
+      <br>
     <%#<% end %>
   </p>
 <% end %>
 <br>
 <br>
 
-<h2>いいねランキング</h2>
+<h2>Goodランキング</h2>
 <% @like_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
 <%= image_tag "/get_image/#{t.id}" %>
@@ -75,7 +84,7 @@
 <br>
 <br>
 
-<h2>バッドランキング</h2>
+<h2>Badランキング</h2>
 <% @bad_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
 <%= image_tag "/get_image/#{t.id}" %>
