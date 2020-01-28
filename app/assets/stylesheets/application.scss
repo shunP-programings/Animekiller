@@ -1,9 +1,17 @@
 @import "bootstrap";
+body{
+    font-family:"Hiragino Maru Gothic Pro"
+}
 
 footer{
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    .footer-text{
+        text-align: center
+    }
 }
+
 .main{
     margin-top: 3%;
+    height: 800px;
 }
+

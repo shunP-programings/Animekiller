@@ -1,18 +1,36 @@
-<h2>ログイン画面</h2>
+<div style= "margin-bottom:30px">
+  <h1>ログイン画面</h1>
+</div>
+
 <% if flash[:notice] %>
-  <p><font color="blue"><%= flash[:notice] %></font></p>
+  <p>
+    <font color="blue">
+      <%= flash[:notice] %>
+    </font>
+  </p>
 <% end %>  
 
+<h3>アニメを斬るにログインする</h3>
+<%= form_with url: top_login_path, local: true do |f| %>
+  <p>
+    <%= f.label :uid, 'ユーザID' %>
+    <%= f.text_field :uid, class: 'form-control' %>
+  </p>
 
-<h2>サイト名にログインする</h2>
-<%= form_tag '/top/login',method: :post do %>
-    <%= label_tag :uid, 'ユーザID' %>
-    <%= text_field_tag :uid %>
-    <%= label_tag :pass, 'パスワード' %>
-    <%= password_field_tag :pass %>
-    <%= submit_tag 'ログイン' %>
+  <p>
+    <%= f.label :pass, 'パスワード' %>
+    <%= f.password_field :pass, class: 'form-control' %>
+  </p>
+  
+  <p>
+    <%= f.submit 'ログイン', class: "btn-lg bg-success" %>
+  </p>
 <%end%>
 
-<p><%= link_to '新規登録', new_user_path %></p>
+<p>
+  <%= link_to '新規登録', new_user_path, class: 'btn btn-primary' %>
+</p>
 
-<p><%= link_to '戻る', :back %>
+<p>
+  <%= link_to '戻る', :back, class: 'btn btn-primary' %>
+</p>
