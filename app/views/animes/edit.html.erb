@@ -1,13 +1,16 @@
-<h1>編集フォーム</h1>
+<div style= "margin-bottom: 30px">
+  <h1>編集フォーム</h1>
+</div>
 <%= form_for @anime, url: {action: :update} do |f| %>
   <h3>アニメタイトル</h3>
-    <%= f.text_field :title %>
-    <br>
-    <br>
-    <h3>感想</h3>
-    <%= f.text_area :message %>
-
-  <%= f.submit '投稿する'%>
+  <p>
+    <%= f.text_field :title, class: 'form-control' %>
+  </p>
+  <h3>感想</h3>
+  <p>
+    <%= f.text_area :message, class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.submit '投稿する', class: 'btn btn-success' %>
+  </p>
 <% end %>
-
-<p>animes</p>
