@@ -47,19 +47,19 @@
         <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
           <%= link_to '😍️', like_path(t), method: :delete %>
         <% else %>
-          <%= link_to 'ｲｲﾈ!️', likes_path(anime_id: t.id), method: :post %>
+          <%= link_to 'ｲｲﾈ!️', likes_path(anime_id: t.id), method: :post, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% if current_user %>
         <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
           <%= link_to '😟', bad_path(t), method: :delete %>
         <% else %>
-          <%= link_to 'ｳ~ﾝ…', bads_path(anime_id: t.id), method: :post %>
+          <%= link_to 'ｳ~ﾝ…', bads_path(anime_id: t.id), method: :post, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% if current_user and t.user_id == current_user.id %>
-        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-        <%= link_to '編集', "animes/#{t.id}/edit" %>
+        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' } ,class: 'btn btn-primary' %>
+        <%= link_to '編集', "animes/#{t.id}/edit", class: 'btn btn-primary' %>
       <% end %>
       <br>
       <br>
