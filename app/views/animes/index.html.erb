@@ -13,13 +13,13 @@
   <%= form_for @anime, url: {action: :create} do |f| %>
   <p>
     <h3>アニメタイトル</h3>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
     <br>
     <br>
     <h3>感想</h3>
-    <%= f.text_area :message %>
+    <%= f.text_area :message, class: 'form-control' %>
     <br>
-    <%= f.submit "送信" %>
+    <%= f.submit '送信', class: 'btn btn-success'%>
   </p>
   <% end %>
 <% end %>
@@ -47,19 +47,19 @@
         <% if Like.find_by(user_id: current_user.id, anime_id: t.id) %>
           <%= link_to '😍️', like_path(t), method: :delete %>
         <% else %>
-          <%= link_to 'ｲｲﾈ!️', likes_path(anime_id: t.id), method: :post %>
+          <%= link_to 'ｲｲﾈ!️', likes_path(anime_id: t.id), method: :post, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% if current_user %>
         <% if Bad.find_by(user_id: current_user.id, anime_id: t.id) %>
           <%= link_to '😟', bad_path(t), method: :delete %>
         <% else %>
-          <%= link_to 'ｳ~ﾝ…', bads_path(anime_id: t.id), method: :post %>
+          <%= link_to 'ｳ~ﾝ…', bads_path(anime_id: t.id), method: :post, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% if current_user and t.user_id == current_user.id %>
-        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' }  %>
-        <%= link_to '編集', "animes/#{t.id}/edit" %>
+        <%= link_to '削除', anime_path(t), method: :delete, data: { confirm: '削除していいですか？' } ,class: 'btn btn-primary' %>
+        <%= link_to '編集', "animes/#{t.id}/edit", class: 'btn btn-primary' %>
       <% end %>
       <br>
       <br>
@@ -96,12 +96,3 @@
 <% end %>
 <br>
 <br>
-
-<% if current_user %>
-  <p><%= link_to 'ログアウト', top_logout_path %></p>
-<% else %>
-  <p><%= link_to 'ログイン', top_login_path %></p>
-<% end %>
-
-<p><%= link_to 'ユーザID一覧', users_path %></p>
-<p><%= link_to '新規登録', new_user_path %></p>

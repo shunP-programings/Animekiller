@@ -1,3 +1,21 @@
-<nav class="navbar navbar-dark bg-primary">
-  <h1>アニメを斬る</h1>
+<nav class="navbar navbar-expand-md navbar-light mb-3 p-4" style="background-color:#33CC66;">
+    <div class="nav-bar-brand nav-class">
+        <h3>
+            アニメを斬る
+        </h3>
+    </div>
+    <ul class="navbar-nav ml-auto">
+        <li class= "nav-item">
+            <%= link_to 'ホーム', root_path, class: 'nav-link' %>
+        </li>
+        <li class= "nav-item">
+            <%= link_to 'ユーザ一覧', users_path, class: 'nav-link' %>
+        </li>
+        <% if current_user %>
+            <li class= "nav-item"><%= link_to 'ログアウト', top_logout_path, method: :delete, class: 'nav-link' %></li>
+        <% else %>
+            <li class= "nav-item"><%= link_to 'ログイン', top_login_path, class: 'nav-link' %></li>
+            <li class= "nav-item"><%= link_to 'サインアップ', new_user_path, class: 'nav-link' %></li>
+        <% end %>
+    </ul>
 </nav>
