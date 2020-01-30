@@ -24,23 +24,16 @@
  <%#  <% end %> 
  
   <%= form_tag("/users/#{@user.id}/get_image", {multipart: true}) do %>
-    <p>
+    <!--<p>
       画像：
       <input name="image" type="file">
     </p>  
-      
+    -->  
     <p>
       <input type="submit" value="登録", class="btn-lg btn-success">
     </p>
+    
   <% end %>
-  
-  <%# <%= f.label "画像をアップロード" %><br>
-  
- <%#  <% if @user.image? %>
- <%#    <%= image_tag @user.image.url %>
- <%#   <% else %>
- <%#    <%= image_tag noimage.gif %>
-  <%# end %>
 
 <% end %>
 

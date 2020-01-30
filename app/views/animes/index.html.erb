@@ -73,11 +73,12 @@
 <h2>Goodランキング</h2>
 <% @like_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
-<%= image_tag "/get_image/#{t.id}" %>
+<%#<%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
+<%#<%= image_tag "/get_image/#{t.id}" %>
 <%= User.find(t.user_id).uid %>
-<%= t.title %>
-<%= t.message %>
-<%# <%= t.message %>
+<br>
+<p>タイトル：<%= t.title %></p>
+<p>内容：<%= t.message %></p>
 <br>
 <br>
 <% end %>
@@ -87,10 +88,12 @@
 <h2>Badランキング</h2>
 <% @bad_ranks.each do |t| %>
 <%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
-<%= image_tag "/get_image/#{t.id}" %>
+<%#<%= image_tag 'hito.png', class:"profile_img", :size =>'40x40' %>
+<%#<%= image_tag "/get_image/#{t.id}" %>
 <%= User.find(t.user_id).uid %>
-<%= t.title %>
-<%= t.message %>
+<br>
+<p>タイトル：<%= t.title %></p>
+<p>内容：<%= t.message %></p>
 <br>
 <br>
 <% end %>
